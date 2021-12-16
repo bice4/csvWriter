@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicCsvWriter.Playground", "EpicCsvWriter.Playground\EpicCsvWriter.Playground.csproj", "{58FD90C6-CD04-4E5F-A274-80CFE9FBCEBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicCsvWriter.Core", "EpicCsvWriter.Core\EpicCsvWriter.Core.csproj", "{FCA00245-313D-43AE-9E1D-6A812AAD99E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicCsvWriter.Benchmarks", "EpicCsvWriter.Benchmarks\EpicCsvWriter.Benchmarks.csproj", "{1A0443CA-68F4-40EC-A975-939424EC2712}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58FD90C6-CD04-4E5F-A274-80CFE9FBCEBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FD90C6-CD04-4E5F-A274-80CFE9FBCEBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58FD90C6-CD04-4E5F-A274-80CFE9FBCEBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58FD90C6-CD04-4E5F-A274-80CFE9FBCEBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCA00245-313D-43AE-9E1D-6A812AAD99E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA00245-313D-43AE-9E1D-6A812AAD99E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA00245-313D-43AE-9E1D-6A812AAD99E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA00245-313D-43AE-9E1D-6A812AAD99E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A0443CA-68F4-40EC-A975-939424EC2712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A0443CA-68F4-40EC-A975-939424EC2712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A0443CA-68F4-40EC-A975-939424EC2712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A0443CA-68F4-40EC-A975-939424EC2712}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
