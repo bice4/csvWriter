@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using EpicCsvWriter.Core;
-using EpicCsvWriter.Core.Models;
 
 namespace EpicCsvWriter.Playground.Models {
     public class HistoricalReport {
         [CsvField(Order = 1, Format = "mm:dd:yyyy", Name = "Data and time", PermissionAccess = true)]
         public DateTime date { get; set; }
 
-        [CsvField(Order = 2, Format = "X4", PermissionAccess = true)]
+        [CsvField(Order = 5, Format = "X4", PermissionAccess = true)]
         public int resourceId { get; set; }
 
         [CsvField(Order = 3, PermissionAccess = true)]
@@ -17,7 +15,7 @@ namespace EpicCsvWriter.Playground.Models {
         [CsvField(Order = 4, PermissionAccess = true)]
         public double load { get; set; }
 
-        [CsvField(Order = 5, PermissionAccess = true)]
+        [CsvField(Order = 2, PermissionAccess = true)]
         public double readyToStart { get; set; }
 
         [CsvField(Order = 6, PermissionAccess = true)]
@@ -55,6 +53,5 @@ namespace EpicCsvWriter.Playground.Models {
 
         [CsvField(Order = 17, PermissionAccess = true)]
         public double yellowLoad { get; set; }
-        
     }
 }

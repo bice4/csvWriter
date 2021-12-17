@@ -2,9 +2,9 @@
 using System.Globalization;
 using System.IO;
 using BenchmarkDotNet.Attributes;
-using CsvHelper;
 using EpicCsvWriter.Benchmarks.Models;
-using EpicCsvWriter.Core.Models;
+using EpicCsvWriter.Core;
+using CsvWriter = CsvHelper.CsvWriter;
 
 namespace EpicCsvWriter.Benchmarks {
     [MemoryDiagnoser]
@@ -17,10 +17,12 @@ namespace EpicCsvWriter.Benchmarks {
         [GlobalSetup]
         public void Setup() {
             this._customsReports = new HistoricalReportForCustom[this.N];
+            var now = DateTime.Now;
+
             for (var i = 0; i < this.N; i++) {
                 this._customsReports[i] = new HistoricalReportForCustom() {
                     capacity = .5d + i,
-                    date = DateTime.Now,
+                    date = now,
                     load = 1.2d * i,
                     output = 5.3d + i + i,
                     spent = 3.66 + 2 * i,
@@ -40,10 +42,11 @@ namespace EpicCsvWriter.Benchmarks {
             }
 
             this._helperReports = new HistoricalReportForHelper[this.N];
+            
             for (var i = 0; i < this.N; i++) {
                 this._helperReports[i] = new HistoricalReportForHelper() {
                     capacity = .5d + i,
-                    date = DateTime.Now,
+                    date = now,
                     load = 1.2d * i,
                     output = 5.3d + i + i,
                     spent = 3.66 + 2 * i,
@@ -65,17 +68,16 @@ namespace EpicCsvWriter.Benchmarks {
 
         [Benchmark]
         public void CsvHelper() {
-            using (var writer = new StreamWriter("csvHelper.csv"))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)) {
-                csv.WriteRecords(this._helperReports);
-            }
+            using var writer = new StreamWriter("csvHelper.csv");
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords(this._helperReports);
         }
 
         [Benchmark]
-        public void EpicCsvWriter() {
-            var csv = new EpicCsvWriter.Core.CsvWriter();
-            var data = Core.CsvWriter.WriteCsv(CsvData.CreateCsvData(this._customsReports), ";");
-            File.WriteAllText("csvCustom.csv", data);
+        public void EpicCsvWriter2() {
+            using var writer = new StreamWriter("csvCustomWriter2.txt");
+            Core.CsvWriter.WriteCsv(writer, this._customsReports, ";");
         }
+        
     }
 }

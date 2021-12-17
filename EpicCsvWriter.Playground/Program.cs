@@ -1,20 +1,19 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using EpicCsvWriter.Core;
-using EpicCsvWriter.Core.Models;
 using EpicCsvWriter.Playground.Models;
 
 namespace EpicCsvWriter.Playground {
     class Program {
         static void Main(string[] args) {
-
-
-            var reports = new HistoricalReport[1000];
-
-            for (int i = 0; i < 1000; i++) {
-                reports[i] = new HistoricalReport(){
+            var N = 5000;
+            var reports = new HistoricalReport[N];
+            var now = DateTime.Now;
+            for (int i = 0; i < N; i++) {
+                reports[i] = new HistoricalReport() {
                     capacity = .5d + i,
-                    date = DateTime.Now,
+                    date = now,
                     load = 1.2d * i,
                     output = 5.3d + i + i,
                     spent = 3.66 + 2 * i,
@@ -32,11 +31,14 @@ namespace EpicCsvWriter.Playground {
                     readyToStart = 5.55 + i
                 };
             }
-            var csvWriter = new CsvWriter();
 
-            var d = CsvWriter.WriteCsv(CsvData.CreateCsvData(reports), ";");
-
-            File.WriteAllText("t.txt", d);
+            var sw = new Stopwatch();
+            sw.Start();
+            using var writer = new StreamWriter("t.txt");
+            CsvWriter.WriteCsv(writer, reports, ";");
+            sw.Stop();
+            Console.WriteLine($"Elapsed: {sw.Elapsed.ToString()}");
+            Console.ReadLine();
         }
     }
 }
