@@ -1,34 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
-namespace EpicCsvWriter.Core {
-    public class CsvInfoArray {
-        CsvInfo[] m_array;
-        int m_count;
+namespace EpicCsvWriter.Core;
 
-        public CsvInfoArray(int? initialCapacity = null) {
-            this.m_array = new CsvInfo[initialCapacity ?? 4];
-        }
-        
-        public CsvInfo this[int index] => this.m_array[index];
+public sealed class CsvInfoArray(int? initialCapacity = null)
+{
+    private CsvInfo[] _mArray = new CsvInfo[initialCapacity ?? 4];
+    private int _mCount;
 
-        public IEnumerable<string> GetNames() => this.m_array.Select(x => x.Name);
+    public CsvInfo this[int index] => _mArray[index];
 
-        public int Length => this.m_count;
+    public IEnumerable<string> GetNames() => _mArray.Select(x => x.Name);
 
-        public void Add(CsvInfo element) {
-            if (this.m_count == this.m_array.Length) {
-                Array.Resize(ref this.m_array, this.m_array.Length * 2);
-            }
+    public int length => _mCount;
 
-            this.m_array[this.m_count++] = element;
+    public void Add(CsvInfo element)
+    {
+        if (_mCount == _mArray.Length)
+        {
+            Array.Resize(ref _mArray, _mArray.Length * 2);
         }
 
-        public void Sort(int size) {
-            Array.Resize(ref this.m_array, size);
-            Array.Sort(this.m_array);
-        }
+        _mArray[_mCount++] = element;
+    }
+
+    public void Sort()
+    {
+        Array.Sort(_mArray);
     }
 }
