@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace EpicCsvWriter.Core;
+namespace CsvWriter.Core;
 
 public readonly struct CsvInfo(string name, int order, PropertyInfo propertyInfo, string format)
     : IComparable<CsvInfo>

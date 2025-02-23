@@ -1,7 +1,7 @@
 ﻿using System;
 using BenchmarkDotNet.Running;
 
-namespace EpicCsvWriter.Benchmarks;
+namespace CsvWriter.Benchmarks;
 
 internal static class Program {
     static void Main(string[] args) {

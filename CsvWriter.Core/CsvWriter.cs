@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace EpicCsvWriter.Core;
+namespace CsvWriter.Core;
 
 public static class CsvWriter
 {
@@ -70,6 +70,10 @@ public static class CsvWriter
                     writer.Write(string.IsNullOrWhiteSpace(headerValue.Format)
                         ? ((DateTime)value).ToString(CultureInfo.CurrentCulture)
                         : ((DateTime)value).ToString(headerValue.Format, CultureInfo.CurrentCulture));
+                }
+                else if (headerValue.PropertyInfo.PropertyType == CommonTypes.TypeOfBoolean)
+                {
+                    writer.Write((bool)value ? "true" : "false");
                 }
                 else
                 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EpicCsvWriter.Core;
+namespace CsvWriter.Core;
 
 public sealed class CsvInfoArray(int? initialCapacity = null)
 {

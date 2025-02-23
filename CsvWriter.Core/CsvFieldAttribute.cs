@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace EpicCsvWriter.Core;
+namespace CsvWriter.Core;
 
-[AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
+[AttributeUsage(AttributeTargets.Property)]
 public class CsvFieldAttribute : Attribute {
     public string Format;
     public string Name;
